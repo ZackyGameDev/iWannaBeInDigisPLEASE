@@ -16,7 +16,7 @@ size = Vector3(25, 1, 100)
 [node name="Level" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.935419, 0.35354, 0, -0.35354, 0.935419, 0.766586, 15.6384, 34.0407)
+transform = Transform3D(1, 0, 0, 0, 0.935419, 0.35354, 0, -0.35354, 0.935419, 0, 15.638, 34.041)
 fov = 24.6
 
 [node name="ball" type="CharacterBody3D" parent="."]
@@ -46,3 +46,4 @@ shape = ExtResource("2_hx7to")
 mesh = SubResource("BoxMesh_4ve75")
 
 [node name="world" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -71.217)

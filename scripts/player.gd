@@ -27,7 +27,7 @@ func in_dash():
 
 func _physics_process(delta) -> void:
 	if $collision/visual.scale != Vector3(1, 1, 1):
-		var d = (Vector3(1, 1, 1) - $collision/visual.scale)/10.0
+		var d = (Vector3(1, 1, 1) - $collision/visual.scale)/15.0
 		if d.length() < 0.0005:
 			$collision/visual.scale = Vector3(1, 1, 1)
 		else:
@@ -76,5 +76,5 @@ func _physics_process(delta) -> void:
 	if move_and_slide():
 		if (pvsp > 1):
 			if (pvsp > 20): pvsp = 20
-			$collision/visual.scale = Vector3(1.3, 0.7, 1.3) * pvsp/20
+			$collision/visual.scale = Vector3(1.6, 0.5, 1.6) * pvsp/20
 	
