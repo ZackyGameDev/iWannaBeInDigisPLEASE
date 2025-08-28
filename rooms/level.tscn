@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://6o4cvj6c04bo"]
+
+[ext_resource type="Script" uid="uid://chudnco4jb34f" path="res://scripts/player.gd" id="1_0dt1f"]
+[ext_resource type="Shape3D" uid="uid://begxx5rv4gkgl" path="res://mesh/floor.tres" id="2_hx7to"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0dt1f"]
+radius = 2.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_hx7to"]
+radius = 2.0
+height = 4.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_4ve75"]
+size = Vector3(25, 1, 100)
+
+[node name="Level" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.935419, 0.35354, 0, -0.35354, 0.935419, 0.766586, 15.6384, 34.0407)
+fov = 24.6
+
+[node name="ball" type="CharacterBody3D" parent="."]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 4.80428, 7.90832)
+script = ExtResource("1_0dt1f")
+metadata/_edit_group_ = true
+
+[node name="collision" type="CollisionShape3D" parent="ball"]
+shape = SubResource("SphereShape3D_0dt1f")
+
+[node name="visual" type="MeshInstance3D" parent="ball/collision"]
+mesh = SubResource("SphereMesh_hx7to")
+skeleton = NodePath("../..")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10.3631, 0)
+shadow_enabled = true
+
+[node name="floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -30.5983)
+metadata/_edit_group_ = true
+
+[node name="collision" type="CollisionShape3D" parent="floor"]
+shape = ExtResource("2_hx7to")
+
+[node name="visual" type="MeshInstance3D" parent="floor/collision"]
+mesh = SubResource("BoxMesh_4ve75")
+
+[node name="world" type="Node3D" parent="."]
