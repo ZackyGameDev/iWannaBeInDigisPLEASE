@@ -11,14 +11,26 @@ extends CharacterBody3D
 var pvsp = 0.0
 var squash_thresh = 0.1
 var dash_stamina = dash_cooldown
+var world: Node3D
+var jparticle_countdown = 0
+
+func _ready():
+	world = get_parent().get_node("world")
 
 func can_dash() -> bool:
 	return dash_stamina >= dash_cooldown
 
 func behave_dash():
+	if (in_dash()):
+		$dashparticles.emitting = true
+	else:
+		$dashparticles.emitting = false
+		
+	world.player_dash_bonus = 0
 	if (dash_stamina < dash_time):
 		velocity.y = 0
 		$collision/visual.scale = Vector3(0.8, 0.8, 1.6)
+		world.player_dash_bonus = world.scroll_speed * 0.5
 	dash_stamina += 1
 	if dash_stamina > dash_cooldown: dash_stamina = dash_cooldown
 
@@ -26,6 +38,10 @@ func in_dash():
 	return dash_stamina < dash_time*5/6
 
 func _physics_process(delta) -> void:
+	jparticle_countdown -= 1
+	if jparticle_countdown < 0:
+		jparticle_countdown = 0
+		$jumpparticles.emitting = false
 	if $collision/visual.scale != Vector3(1, 1, 1):
 		var d = (Vector3(1, 1, 1) - $collision/visual.scale)/15.0
 		if d.length() < 0.0005:
@@ -64,6 +80,8 @@ func _physics_process(delta) -> void:
 	elif Input.is_action_just_pressed("ui_up"):
 		velocity.y = jump_velocity
 		$collision/visual.scale = Vector3(0.7, 1.5, 0.7)
+		$jumpparticles.emitting = true
+		jparticle_countdown = 10
 
 	velocity.y -= gravity * delta
 	# dash
@@ -73,6 +91,7 @@ func _physics_process(delta) -> void:
 	behave_dash()
 	
 	pvsp = abs(velocity.y)
+	if (velocity.z < 0): velocity.z = 0
 	if move_and_slide():
 		if (pvsp > 1):
 			if (pvsp > 20): pvsp = 20

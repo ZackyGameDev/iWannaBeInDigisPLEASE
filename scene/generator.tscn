@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnbarwxw3siyp"]
+
+[ext_resource type="Script" uid="uid://6tikn2lwshfl" path="res://scripts/generator.gd" id="1_fqrab"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0dt1f"]
+radius = 2.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_hx7to"]
+radius = 2.0
+height = 4.0
+
+[node name="generator" type="CharacterBody3D"]
+transform = Transform3D(0.64, 0, 0, 0, 0.64, 0, 0, 0, 0.64, 0, 0, 0)
+script = ExtResource("1_fqrab")
+metadata/_edit_group_ = true
+
+[node name="collision" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_0dt1f")
+
+[node name="visual" type="MeshInstance3D" parent="collision"]
+mesh = SubResource("SphereMesh_hx7to")
+skeleton = NodePath("../..")

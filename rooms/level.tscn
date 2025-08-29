@@ -1,62 +1,62 @@
-[gd_scene load_steps=7 format=3 uid="uid://6o4cvj6c04bo"]
+[gd_scene load_steps=10 format=3 uid="uid://6o4cvj6c04bo"]
 
-[ext_resource type="Script" uid="uid://chudnco4jb34f" path="res://scripts/player.gd" id="1_0dt1f"]
+[ext_resource type="PackedScene" uid="uid://cb812vmq8ibn1" path="res://scene/player.tscn" id="1_4ve75"]
 [ext_resource type="Shape3D" uid="uid://begxx5rv4gkgl" path="res://mesh/floor.tres" id="2_hx7to"]
-[ext_resource type="Script" uid="uid://6tikn2lwshfl" path="res://scripts/generator.gd" id="3_4ve75"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_0dt1f"]
-radius = 2.0
-
-[sub_resource type="SphereMesh" id="SphereMesh_hx7to"]
-radius = 2.0
-height = 4.0
+[ext_resource type="Script" uid="uid://dvyusg2f24c1t" path="res://rooms/world.gd" id="3_dg3qb"]
+[ext_resource type="PackedScene" uid="uid://dnbarwxw3siyp" path="res://scene/generator.tscn" id="3_tibj6"]
+[ext_resource type="PackedScene" uid="uid://bgfkfn62rfwdk" path="res://objects/floor.tscn" id="4_tibj6"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4ve75"]
-size = Vector3(25, 1, 100)
+size = Vector3(25, 50, 200)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dg3qb"]
+
+[sub_resource type="Sky" id="Sky_x0uc3"]
+sky_material = SubResource("ProceduralSkyMaterial_dg3qb")
+
+[sub_resource type="Environment" id="Environment_dg3qb"]
+background_mode = 2
+sky = SubResource("Sky_x0uc3")
 
 [node name="Level" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.935419, 0.35354, 0, -0.35354, 0.935419, 0, 15.638, 34.041)
-fov = 24.6
+transform = Transform3D(1, 0, 0, 0, 0.951154, 0.308718, 0, -0.308718, 0.951154, 0, 13.1091, 34.041)
+fov = 25.0
 
-[node name="ball" type="CharacterBody3D" parent="."]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 4.80428, 7.90832)
-script = ExtResource("1_0dt1f")
-metadata/_edit_group_ = true
-
-[node name="collision" type="CollisionShape3D" parent="ball"]
-shape = SubResource("SphereShape3D_0dt1f")
-
-[node name="visual" type="MeshInstance3D" parent="ball/collision"]
-mesh = SubResource("SphereMesh_hx7to")
-skeleton = NodePath("../..")
+[node name="ball" parent="." instance=ExtResource("1_4ve75")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 6.86941, 7.90832)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10.3631, 0)
+transform = Transform3D(0.427199, -0.592908, -0.682614, 0.903699, 0.255956, 0.343241, -0.0287914, -0.763509, 0.645155, -1.09841, 18.547, 0)
 shadow_enabled = true
 
-[node name="floor" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -30.5983)
+[node name="earth" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -128.263)
+visible = false
 metadata/_edit_group_ = true
 
-[node name="collision" type="CollisionShape3D" parent="floor"]
+[node name="collision" type="CollisionShape3D" parent="earth"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -25, 0)
 shape = ExtResource("2_hx7to")
 
-[node name="visual" type="MeshInstance3D" parent="floor/collision"]
+[node name="visual" type="MeshInstance3D" parent="earth/collision"]
 mesh = SubResource("BoxMesh_4ve75")
 
 [node name="world" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -71.217)
+script = ExtResource("3_dg3qb")
 
-[node name="generator" type="CharacterBody3D" parent="world"]
-transform = Transform3D(0.64, 0, 0, 0, 0.64, 0, 0, 0, 0.64, 0, 8.6477, 69.69)
-script = ExtResource("3_4ve75")
-metadata/_edit_group_ = true
+[node name="generator" parent="world" instance=ExtResource("3_tibj6")]
+transform = Transform3D(0.64, 0, 0, 0, 0.64, 0, 0, 0, 0.64, 0, 3.05493, -42.0965)
 
-[node name="collision" type="CollisionShape3D" parent="world/generator"]
-shape = SubResource("SphereShape3D_0dt1f")
+[node name="floor" parent="world" instance=ExtResource("4_tibj6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 79.153)
 
-[node name="visual" type="MeshInstance3D" parent="world/generator/collision"]
-mesh = SubResource("SphereMesh_hx7to")
-skeleton = NodePath("../..")
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.4857, 0)
+visible = false
+omni_range = 85.9852
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_dg3qb")

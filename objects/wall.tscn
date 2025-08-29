@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://dy4taq4nt37g5"]
+
+[ext_resource type="Script" uid="uid://d0dvf21wn7j4q" path="res://scripts/wall.gd" id="1_r71v4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hklci"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r71v4"]
+albedo_color = Color(0.999451, 0, 0.180893, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_r71v4"]
+size = Vector3(25, 4, 0.5)
+
+[node name="wall" type="StaticBody3D"]
+script = ExtResource("1_r71v4")
+
+[node name="collision" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_hklci")
+
+[node name="visual" type="MeshInstance3D" parent="collision"]
+material_override = SubResource("StandardMaterial3D_r71v4")
+mesh = SubResource("BoxMesh_r71v4")
