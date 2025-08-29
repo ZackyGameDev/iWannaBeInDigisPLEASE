@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://6o4cvj6c04bo"]
+[gd_scene load_steps=7 format=3 uid="uid://6o4cvj6c04bo"]
 
 [ext_resource type="Script" uid="uid://chudnco4jb34f" path="res://scripts/player.gd" id="1_0dt1f"]
 [ext_resource type="Shape3D" uid="uid://begxx5rv4gkgl" path="res://mesh/floor.tres" id="2_hx7to"]
+[ext_resource type="Script" uid="uid://6tikn2lwshfl" path="res://scripts/generator.gd" id="3_4ve75"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0dt1f"]
 radius = 2.0
@@ -47,3 +48,15 @@ mesh = SubResource("BoxMesh_4ve75")
 
 [node name="world" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -71.217)
+
+[node name="generator" type="CharacterBody3D" parent="world"]
+transform = Transform3D(0.64, 0, 0, 0, 0.64, 0, 0, 0, 0.64, 0, 8.6477, 69.69)
+script = ExtResource("3_4ve75")
+metadata/_edit_group_ = true
+
+[node name="collision" type="CollisionShape3D" parent="world/generator"]
+shape = SubResource("SphereShape3D_0dt1f")
+
+[node name="visual" type="MeshInstance3D" parent="world/generator/collision"]
+mesh = SubResource("SphereMesh_hx7to")
+skeleton = NodePath("../..")
