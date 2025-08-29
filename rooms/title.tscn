@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvxwyl7lkeu35"]
+
+[ext_resource type="Texture2D" uid="uid://1e2jftn2kwa6" path="res://title.png" id="1_bnmwx"]
+[ext_resource type="Script" uid="uid://bkb2r0p5ex3g5" path="res://rooms/title.gd" id="1_oklq0"]
+[ext_resource type="AudioStream" uid="uid://cw76akwrnivih" path="res://tension.wav" id="3_sqsk4"]
+
+[node name="Title" type="Node3D"]
+script = ExtResource("1_oklq0")
+
+[node name="Title" type="Sprite2D" parent="."]
+position = Vector2(576, 320)
+texture = ExtResource("1_bnmwx")
+
+[node name="titleaudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_sqsk4")
+autoplay = true

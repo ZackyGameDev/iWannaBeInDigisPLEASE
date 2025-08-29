@@ -1,13 +1,93 @@
-[gd_scene load_steps=10 format=3 uid="uid://6o4cvj6c04bo"]
+[gd_scene load_steps=14 format=3 uid="uid://6o4cvj6c04bo"]
 
 [ext_resource type="PackedScene" uid="uid://cb812vmq8ibn1" path="res://scene/player.tscn" id="1_4ve75"]
 [ext_resource type="Shape3D" uid="uid://begxx5rv4gkgl" path="res://mesh/floor.tres" id="2_hx7to"]
 [ext_resource type="Script" uid="uid://dvyusg2f24c1t" path="res://rooms/world.gd" id="3_dg3qb"]
 [ext_resource type="PackedScene" uid="uid://dnbarwxw3siyp" path="res://scene/generator.tscn" id="3_tibj6"]
 [ext_resource type="PackedScene" uid="uid://bgfkfn62rfwdk" path="res://objects/floor.tscn" id="4_tibj6"]
+[ext_resource type="AudioStream" uid="uid://cw54unloexnxf" path="res://titlefinal.wav" id="6_x0uc3"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4ve75"]
 size = Vector3(25, 50, 200)
+
+[sub_resource type="FontFile" id="FontFile_dg3qb"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/30/0/ascent = 0.0
+cache/0/30/0/descent = 0.0
+cache/0/30/0/underline_position = 0.0
+cache/0/30/0/underline_thickness = 0.0
+cache/0/30/0/scale = 1.0
+cache/0/85/0/ascent = 0.0
+cache/0/85/0/descent = 0.0
+cache/0/85/0/underline_position = 0.0
+cache/0/85/0/underline_thickness = 0.0
+cache/0/85/0/scale = 1.0
+cache/0/215/0/ascent = 0.0
+cache/0/215/0/descent = 0.0
+cache/0/215/0/underline_position = 0.0
+cache/0/215/0/underline_thickness = 0.0
+cache/0/215/0/scale = 1.0
+cache/0/495/0/ascent = 0.0
+cache/0/495/0/descent = 0.0
+cache/0/495/0/underline_position = 0.0
+cache/0/495/0/underline_thickness = 0.0
+cache/0/495/0/scale = 1.0
+cache/0/485/0/ascent = 0.0
+cache/0/485/0/descent = 0.0
+cache/0/485/0/underline_position = 0.0
+cache/0/485/0/underline_thickness = 0.0
+cache/0/485/0/scale = 1.0
+cache/0/340/0/ascent = 0.0
+cache/0/340/0/descent = 0.0
+cache/0/340/0/underline_position = 0.0
+cache/0/340/0/underline_thickness = 0.0
+cache/0/340/0/scale = 1.0
+cache/0/140/0/ascent = 0.0
+cache/0/140/0/descent = 0.0
+cache/0/140/0/underline_position = 0.0
+cache/0/140/0/underline_thickness = 0.0
+cache/0/140/0/scale = 1.0
+cache/0/90/0/ascent = 0.0
+cache/0/90/0/descent = 0.0
+cache/0/90/0/underline_position = 0.0
+cache/0/90/0/underline_thickness = 0.0
+cache/0/90/0/scale = 1.0
+cache/0/45/0/ascent = 0.0
+cache/0/45/0/descent = 0.0
+cache/0/45/0/underline_position = 0.0
+cache/0/45/0/underline_thickness = 0.0
+cache/0/45/0/scale = 1.0
+cache/0/40/0/ascent = 0.0
+cache/0/40/0/descent = 0.0
+cache/0/40/0/underline_position = 0.0
+cache/0/40/0/underline_thickness = 0.0
+cache/0/40/0/scale = 1.0
+cache/0/35/0/ascent = 0.0
+cache/0/35/0/descent = 0.0
+cache/0/35/0/underline_position = 0.0
+cache/0/35/0/underline_thickness = 0.0
+cache/0/35/0/scale = 1.0
+cache/0/65/0/ascent = 0.0
+cache/0/65/0/descent = 0.0
+cache/0/65/0/underline_position = 0.0
+cache/0/65/0/underline_thickness = 0.0
+cache/0/65/0/scale = 1.0
+cache/0/80/0/ascent = 0.0
+cache/0/80/0/descent = 0.0
+cache/0/80/0/underline_position = 0.0
+cache/0/80/0/underline_thickness = 0.0
+cache/0/80/0/scale = 1.0
+
+[sub_resource type="Theme" id="Theme_x0uc3"]
+default_font = SubResource("FontFile_dg3qb")
+default_font_size = 40
+
+[sub_resource type="Theme" id="Theme_ar4t0"]
+default_font_size = 80
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dg3qb"]
 
@@ -25,7 +105,7 @@ transform = Transform3D(1, 0, 0, 0, 0.951154, 0.308718, 0, -0.308718, 0.951154, 
 fov = 25.0
 
 [node name="ball" parent="." instance=ExtResource("1_4ve75")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 6.86941, 7.90832)
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 4.34647, 7.90832)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.427199, -0.592908, -0.682614, 0.903699, 0.255956, 0.343241, -0.0287914, -0.763509, 0.645155, -1.09841, 18.547, 0)
@@ -48,10 +128,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -71.217)
 script = ExtResource("3_dg3qb")
 
 [node name="generator" parent="world" instance=ExtResource("3_tibj6")]
-transform = Transform3D(0.64, 0, 0, 0, 0.64, 0, 0, 0, 0.64, 0, 3.05493, -42.0965)
+transform = Transform3D(0.64, 0, 0, 0, 0.64, 0, 0, 0, 0.64, 0, 2.5, -42.097)
 
 [node name="floor" parent="world" instance=ExtResource("4_tibj6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 79.153)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 82.8603)
+
+[node name="scoreboard" type="RichTextLabel" parent="world"]
+offset_right = 313.0
+offset_bottom = 150.0
+theme = SubResource("Theme_x0uc3")
+text = "Score:"
+
+[node name="gameovertext" type="RichTextLabel" parent="world"]
+offset_right = 1152.0
+offset_bottom = 648.0
+theme = SubResource("Theme_ar4t0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="bgm" type="AudioStreamPlayer2D" parent="world"]
+stream = ExtResource("6_x0uc3")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.4857, 0)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://bns7s72w87pmv"]
+[gd_scene load_steps=13 format=3 uid="uid://bns7s72w87pmv"]
 
 [ext_resource type="Script" uid="uid://dydfw3bpn7dsb" path="res://scripts/ring.gd" id="1_w5hb6"]
+[ext_resource type="AudioStream" uid="uid://dexeg4lhmmccl" path="res://ring.wav" id="2_ogjf3"]
 
 [sub_resource type="TorusMesh" id="TorusMesh_w5hb6"]
 inner_radius = 3.0
@@ -58,6 +59,9 @@ emission = Color(1, 1, 0, 1)
 material = SubResource("StandardMaterial3D_mdp2e")
 size = Vector3(0.2, 0.2, 0.1)
 
+[sub_resource type="Theme" id="Theme_w5hb6"]
+default_font_size = 75
+
 [node name="ring" type="Area3D"]
 script = ExtResource("1_w5hb6")
 
@@ -86,5 +90,17 @@ lifetime = 0.5
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_ogjf3")
 draw_pass_1 = SubResource("PrismMesh_ogjf3")
+
+[node name="text" type="RichTextLabel" parent="."]
+offset_top = -128.0
+offset_right = 1152.0
+offset_bottom = 520.0
+theme = SubResource("Theme_w5hb6")
+theme_override_colors/default_color = Color(0.988235, 1, 0.278431, 1)
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="collectsound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_ogjf3")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

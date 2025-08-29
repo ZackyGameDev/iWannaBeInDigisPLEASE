@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://7ctkpbvluda1"]
+
+[ext_resource type="Script" uid="uid://di0ygdo5c1dia" path="res://rooms/controls.gd" id="1_fxs52"]
+[ext_resource type="Texture2D" uid="uid://cjwhf6uijbsi3" path="res://controls.png" id="2_16wws"]
+
+[sub_resource type="Theme" id="Theme_4nd33"]
+default_font_size = 55
+
+[node name="controls" type="Node3D"]
+script = ExtResource("1_fxs52")
+
+[node name="Controls" type="Sprite2D" parent="."]
+position = Vector2(576, 328)
+texture = ExtResource("2_16wws")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 736.0
+offset_top = 552.0
+offset_right = 1360.0
+offset_bottom = 824.0
+theme = SubResource("Theme_4nd33")
+text = "Press ENTER"

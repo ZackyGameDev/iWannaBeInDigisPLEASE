@@ -13,7 +13,7 @@ var dash_stamina = dash_cooldown
 
 # THATS RIGHT BABY ITS TIME TO MAKE A GENERAAAAAAAAAATOR
 @export var x_limit = 9.0
-@export var default_decision_cooldown = 30
+@export var default_decision_cooldown = 40
 var decision_cooldown = 20
 @export var jump_chance = 0.2
 @export var dash_chance_midair = 0.5

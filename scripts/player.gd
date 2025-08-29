@@ -38,6 +38,13 @@ func in_dash():
 	return dash_stamina < dash_time*5/6
 
 func _physics_process(delta) -> void:
+	
+	# game over
+	if position.y < -10:
+		if not ($over.playing):
+			world.get_node("bgm").stop()
+			$over.play()
+	
 	jparticle_countdown -= 1
 	if jparticle_countdown < 0:
 		jparticle_countdown = 0
@@ -82,12 +89,14 @@ func _physics_process(delta) -> void:
 		$collision/visual.scale = Vector3(0.7, 1.5, 0.7)
 		$jumpparticles.emitting = true
 		jparticle_countdown = 10
+		$jump.play()
 
 	velocity.y -= gravity * delta
 	# dash
 	if Input.is_action_just_pressed("ui_accept"):
 		if (can_dash()):
 			dash_stamina = 0;
+			$dash.play()
 	behave_dash()
 	
 	pvsp = abs(velocity.y)
@@ -96,4 +105,10 @@ func _physics_process(delta) -> void:
 		if (pvsp > 1):
 			if (pvsp > 20): pvsp = 20
 			$collision/visual.scale = Vector3(1.6, 0.5, 1.6) * pvsp/20
+			$floor.play()
 	
+
+
+func _on_over_finished() -> void:
+	world.game_over()
+	queue_free()
